@@ -1,0 +1,30 @@
+<%=flash[:message]%>
+<h1>All Recipes</h1>
+<%@recipeType.each do |t|%>
+    <h2><%=t.name%></h2>
+    <%@recipes.each do |recipe|%>
+    
+    <%if recipe.recipeType_id == t.id%> 
+    <a href="/recipes/<%=recipe.id%>">
+    <%=recipe.name%> </a> by <%=recipe.user.username%>
+    <br>
+    <%end%>
+    <% end %>
+    <br>
+    <br>
+    <% end %>
+
+    <%if session[:user_id]%>
+<form method='get' action='/user/account' id='back_to_account'>
+<button type='submit'>Back to account</button>
+</form>
+<form method='get' action='/'>
+<button type='submit' value=submit>Homepage</button>
+</form>
+
+<% else %>
+<form method='get' action='/' id='back_to_homepage'>
+<button type='submit'>Back to Homepage</button>
+</form>
+<% end %>
+<br>

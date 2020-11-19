@@ -1,0 +1,43 @@
+<h1>Cookmode!</h1>
+<h2><%=@recipe.name%></h2>
+<h5><%=@recipe.recipeType.name%></h5>
+<br>
+<h3>Ingredients</h2>
+
+<ul>
+    <%@ingredients.each do |i|%>
+    <li><input type='checkbox'> <%=i%></input>
+    
+    <br>
+    <% end %>
+    </ul>
+<br>
+<br>
+<h3>Steps:</h3>
+<ul>
+    <%@steps.each do |i|%>
+        <li><input type='checkbox'> <%=i%></input>
+
+    <br>
+    <% end %>
+    </ul>
+<br>
+<br>
+<h3>Description</h3>
+<p><%= @recipe.description %></p>
+
+
+<%if session[:user_id]%>
+<form method='get' action='/user/account' id='back_to_account'>
+<button type='submit'>Back to account</button>
+</form>
+<form method='get' action='/'>
+<button type='submit' value=submit>Homepage</button>
+</form>
+
+<% else %>
+<form method='get' action='/' id='back_to_homepage'>
+<button type='submit'>Back to Homepage</button>
+</form>
+<% end %>
+<br>

@@ -1,0 +1,40 @@
+
+<%if @recipe.user_id == session[:user_id]%>
+<%=flash[:message]%>
+<h1>Edit Recipe</h1>
+<br>
+<form method='post' action='/recipes/<%=@recipe.id%>' id='edit_recipe'>
+<input type="hidden" name="_method" value="patch">
+<label for="recipe_name">Name:</label>
+<input type="text" name="recipe[name]" id="recipe_name" value='<%=@recipe.name%>'><br>
+<label for="ingredients">Ingredients:</label><br>
+<textarea name="recipe[ingredients]"><%= @recipe.ingredients %></textarea><br>
+<label for="steps">Steps:</label><br>
+<textarea name="recipe[steps]"><%= @recipe.steps %></textarea><br>
+<label for="description">Description:</label><br>
+<textarea name="recipe[description]"><%= @recipe.description %></textarea><br>
+
+<%@recipeType.each do |t|%>
+<input type='radio' id="<%t.name%>" name="recipe[recipeType_id]" value='<%=t.id%>' <%if @recipe.recipeType==t%> checked <%end%> >
+<label for='<%t.name%>'><%=t.name%></label>
+<% end %>
+
+<br>
+<input type="submit" value="Edit"><br>
+<br>
+<input type="hidden" name="recipe[user_id]" value="<%=session[:user_id]%>">
+
+</form>
+
+<form method='get' action='/user/account' id='back_to_account'>
+<button type='submit'>Back to account</button>
+</form>
+
+
+<% else %>
+<h1>Your not authorized to edit this article</h1>
+<form method='get' action='/user/account' id='back_to_account'>
+<button type='submit'>Back to account</button>
+</form>
+<% end %>
+

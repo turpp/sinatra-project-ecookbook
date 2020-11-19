@@ -1,0 +1,50 @@
+<style>
+.wrapper {
+    background: #fff;
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    margin: 16px auto;
+    max-width: 960px;
+    padding: 2.25%; /* 18px / 800px */
+    width: 85%;
+  }
+  </style>
+
+<%=flash[:message]%>
+
+
+<h1 class="display-3">Welcome to EcookBook!!</h1>
+
+<br>
+<br>
+
+
+<form class="form-signin" method="post" action="/login">
+  <img class="rounded mx-auto d-block" src="https://image.flaticon.com/icons/png/512/113/113339.png" alt="" width="84" height="84">
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+  <label for="inputusername" class="sr-only">Username:</label>
+  <input name=user[username] type="text" id="inputusername" class="form-control" placeholder="Username" required autofocus>
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input name=user[password_digest] type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  <br>
+</form>
+<div class="text-center">
+  <p class="lead"> Or Sign Up!</p>
+
+<form method='get' action='/signup'>
+<button type="submit" class="btn btn-outline-secondary">Sign Up</button>
+</form>
+<div>
+<br>
+<br>
+<span class="border-top">
+<footer class="mastfoot mt-auto">
+    <div class="inner">
+    <small>&copy; 2020 <strong>Ecookbook</strong></small>
+    </div>
+  </footer>
+  </span>
+
+

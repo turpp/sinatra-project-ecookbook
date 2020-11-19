@@ -1,0 +1,140 @@
+<style>
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+/* Custom default button */
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #fff;
+  border: .05rem solid #fff;
+}
+
+/* Header */
+.masthead {
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+}
+
+.masthead-brand {
+  margin-bottom: 0;
+}
+
+.nav-masthead .nav-link {
+  padding: .25rem 0;
+  font-weight: 700;
+  color: rgba(255, 255, 255, .5);
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+  }
+}
+
+body {
+  padding-top: 1rem;
+}
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: left;
+}
+</style>
+
+
+<%=flash[:message]%>
+
+
+  <header class="masthead mb-auto">
+    <div class="inner">
+      <h3 class="masthead-brand">EcookBook</h3>
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link active" href="/signup">Account</a>
+
+        <a class="nav-link" href="/recipes/new">Create Recipe</a>
+        <a class="nav-link" href="/recipes">All Recipes</a>
+        <a class="nav-link" href="/recipes/random">Surprise!</a>
+        <a class="nav-link" href="/logout">Logout</a>
+
+      </nav>
+    </div>
+  </header>
+
+
+
+
+
+
+<main role="main" class="container">
+<div class="starter-template">
+
+<h1>Welcome <%= @user.username %>!</h1>
+<br>
+<br>
+<h2 class="all-recipes">All Recipes</h2>
+
+<%@recipeType.each do |t|%>
+<h3><%=t.name%></h3>
+    <%@user.recipes.each do |recipe|%>
+        <%if recipe.recipeType==t%>
+        <a href="/recipes/<%=recipe.id%>">
+        <%=recipe.name%> </a> by <%=recipe.user.username%>
+<br>
+        <%=recipe.description%>       
+    <br>
+    <br>
+        <%end%>
+    <% end %>
+<%end%>
+</main>
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+        <h2>Heading</h2>
+        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <h2>Heading</h2>
+        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <h2>Heading</h2>
+        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+  <footer class="mastfoot mt-auto">
+    <div class="inner">
+    <small>&copy; 2020 <strong>Ecookbook</strong></small>
+    </div>
+  </footer>
+</div>
