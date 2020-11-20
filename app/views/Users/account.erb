@@ -95,21 +95,60 @@ body {
 <h1>Welcome <%= @user.username %>!</h1>
 <br>
 <br>
-<h2 class="all-recipes">All Recipes</h2>
 
+
+
+
+
+
+
+
+
+
+
+<h2 class="all-recipes">All Recipes</h2>
 <%@recipeType.each do |t|%>
 <h3><%=t.name%></h3>
+<div class="row ">
+
     <%@user.recipes.each do |recipe|%>
         <%if recipe.recipeType==t%>
-        <a href="/recipes/<%=recipe.id%>">
-        <%=recipe.name%> </a> by <%=recipe.user.username%>
-<br>
-        <%=recipe.description%>       
-    <br>
+          <div class="col-md-4">
+          <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 24rem;">
+          <div class="card-body">
+          <h5 class="card-title"><strong><%=recipe.name%></strong> <br> <small class="text-muted">by <%=recipe.user.username%></small></h5>  
+          <p class="card-text lead"> <%=recipe.description%></p>
+          <a href="/recipes/<%=recipe.id%>" class="btn btn-primary">View Recipe</a>
+          
+          </div>
+          </div>
+          </div>
+          <br>
+        >
     <br>
         <%end%>
     <% end %>
+    </div>
 <%end%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </main>
 
     <!-- Three columns of text below the carousel -->
