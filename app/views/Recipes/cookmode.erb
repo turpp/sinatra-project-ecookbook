@@ -1,43 +1,167 @@
-<h1>Cookmode!</h1>
-<h2><%=@recipe.name%></h2>
-<h5><%=@recipe.recipeType.name%></h5>
-<br>
-<h3>Ingredients</h2>
+<style>
 
-<ul>
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+/* Custom default button */
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #fff;
+  border: .05rem solid #fff;
+}
+
+/* Header */
+.masthead {
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+}
+
+.masthead-brand {
+  margin-bottom: 0;
+}
+
+.nav-masthead .nav-link {
+  padding: .25rem 0;
+  font-weight: 700;
+  color: black;
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: lightgrey;
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: grey;
+  border-bottom-color: lightgrey;
+}
+
+@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+  }
+}
+
+.wrapper {
+    background: #fff;
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    margin: 16px auto;
+    max-width: 960px;
+    padding: 2.25%; /* 18px / 800px */
+    width: 85%;
+  }
+
+body {
+  padding-top: 1rem;
+}
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+.card {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+}
+.display-2{
+    text-align: center;
+}
+.text-muted{
+    text-align: center;
+}
+</style>
+
+  <header class="masthead mb-auto">
+    <div class="inner">
+      <h3 class="masthead-brand">EcookBook</h3>
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link" href="/">Home</a>
+        <a class="nav-link" href="/signup">Account</a>
+        <a class="nav-link active" href="/recipes/new">Create Recipe</a>
+        <a class="nav-link" href="/recipes">All Recipes</a>
+        <a class="nav-link" href="/recipes/random">Surprise!</a>
+        <a class="nav-link" href="/logout">Logout</a>
+
+      </nav>
+    </div>
+  </header>
+
+  <br>
+  <br>
+  <br>
+
+
+
+
+
+
+<h1><em>Cookmode!</em></h1>
+
+<h2 class="display-2"><%=@recipe.name%></h2>
+ <small class="text-muted">
+<h5><%=@recipe.recipeType.name%></h5>
+</small>
+
+<br>
+
+
+
+
+<div class="card" style="width: 40rem;">
+  <div class="card-header">
+<p class="lead"><strong>Ingredients:</strong></p>
+</div>
+<ul class="list-group list-group-flush">
     <%@ingredients.each do |i|%>
-    <li><input type='checkbox'> <%=i%></input>
+    <li class="list-group-item"><input type='checkbox'> <%=i%></input></li>
     
     <br>
     <% end %>
     </ul>
+</div>
+
 <br>
 <br>
-<h3>Steps:</h3>
-<ul>
+<div class="card" style="width: 40rem;">
+  <div class="card-header">
+
+<p class="lead"><strong>Steps:</strong></p>
+</div>
+
+<ul class="list-group list-group-flush">
     <%@steps.each do |i|%>
-        <li><input type='checkbox'> <%=i%></input>
+        <li class="list-group-item"><input type='checkbox'> <%=i%></input></li>
 
     <br>
     <% end %>
     </ul>
+
+
+</div>
 <br>
 <br>
+<div class="card">
+<div class="card-body">
 <h3>Description</h3>
 <p><%= @recipe.description %></p>
+</div>
+</div>
 
 
-<%if session[:user_id]%>
-<form method='get' action='/user/account' id='back_to_account'>
-<button type='submit'>Back to account</button>
-</form>
-<form method='get' action='/'>
-<button type='submit' value=submit>Homepage</button>
-</form>
 
-<% else %>
-<form method='get' action='/' id='back_to_homepage'>
-<button type='submit'>Back to Homepage</button>
-</form>
-<% end %>
-<br>
