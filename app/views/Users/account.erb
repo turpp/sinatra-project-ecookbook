@@ -4,15 +4,7 @@ a:focus,
 a:hover {
   color: #fff;
 }
-/* Custom default button */
-.btn-secondary,
-.btn-secondary:hover,
-.btn-secondary:focus {
-  color: #333;
-  text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: #fff;
-  border: .05rem solid #fff;
-}
+
 
 /* Header */
 .masthead {
@@ -55,19 +47,15 @@ a:hover {
   }
 }
 
-body {
-  padding-top: 1rem;
-}
-.starter-template {
-  padding: 3rem 1.5rem;
-  text-align: left;
-}
+
+
+
 </style>
 
 
 <%=flash[:message]%>
 
-
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <header class="masthead mb-auto">
     <div class="inner">
       <h3 class="masthead-brand">EcookBook</h3>
@@ -89,9 +77,8 @@ body {
 
 
 
-<main role="main" class="container">
-<div class="starter-template">
-
+<br>
+<br>
 <h1>Welcome <%= @user.username %>!</h1>
 <br>
 <br>
@@ -106,17 +93,30 @@ body {
 
 
 
-<h2 class="all-recipes">All Recipes</h2>
 <%@recipeType.each do |t|%>
-<h3><%=t.name%></h3>
+<br>
+<br>
+<h2 class="display-4"><u><%=t.name%></u></h2>
 <div class="row ">
-
     <%@user.recipes.each do |recipe|%>
         <%if recipe.recipeType==t%>
           <div class="col-md-4">
           <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 24rem;">
+          <%if recipe.recipeType.name=="Breakfast"%>
+          <img src="https://www.flaticon.com/svg/static/icons/svg/985/985505.svg" class="card-img-top" alt="Breakfast Icon" width="90" height="90">
+          <% elsif recipe.recipeType.name=="Lunch" %>
+          <img src="https://www.flaticon.com/svg/static/icons/svg/601/601684.svg" class="card-img-top" alt="Lunch Icon" width="90" height="90">
+          <% elsif recipe.recipeType.name=="Dinner"%>
+          <img src="https://www.flaticon.com/svg/static/icons/svg/1046/1046874.svg" class="card-img-top" alt="Dinner Icon" width="90" height="90">
+          <% elsif recipe.recipeType.name=="Dessert"%>
+          <img src="https://www.flaticon.com/svg/static/icons/svg/2965/2965574.svg" class="card-img-top" alt="Dessert Icon" width="90" height="90">
+          <% elsif recipe.recipeType.name=="Snack" %>
+          <img src="https://www.flaticon.com/svg/static/icons/svg/3076/3076046.svg" class="card-img-top" alt="Snack Icon" width="90" height="90">
+          <% else %>
+
+          <%end%>
           <div class="card-body">
-          <h5 class="card-title"><strong><%=recipe.name%></strong> <br> <small class="text-muted">by <%=recipe.user.username%></small></h5>  
+          <h5 class="card-title"><strong><%=recipe.name%></strong></h5>  
           <p class="card-text lead"> <%=recipe.description%></p>
           <a href="/recipes/<%=recipe.id%>" class="btn btn-primary">View Recipe</a>
           
@@ -124,7 +124,7 @@ body {
           </div>
           </div>
           <br>
-        >
+        
     <br>
         <%end%>
     <% end %>
@@ -149,31 +149,12 @@ body {
 
 
 
-</main>
 
-    <!-- Three columns of text below the carousel -->
-    <div class="row">
-      <div class="col-lg-4">
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <h2>Heading</h2>
-        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-      <div class="col-lg-4">
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div><!-- /.col-lg-4 -->
-    </div><!-- /.row -->
 
+</div>
 
   <footer class="mastfoot mt-auto">
     <div class="inner">
     <small>&copy; 2020 <strong>Ecookbook</strong></small>
     </div>
   </footer>
-</div>
