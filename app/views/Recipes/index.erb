@@ -122,17 +122,12 @@ a:hover {
     <% end %>
 
 
-    <%if session[:user_id]%>
-<form method='get' action='/user/account' id='back_to_account'>
-<button type='submit'>Back to account</button>
-</form>
-<form method='get' action='/'>
-<button type='submit' value=submit>Homepage</button>
-</form>
 
-<% else %>
-<form method='get' action='/' id='back_to_homepage'>
-<button type='submit'>Back to Homepage</button>
-</form>
-<% end %>
 <br>
+<span class="border-top">
+<footer class="mastfoot mt-auto">
+    <div class="inner">
+    <small>&copy; 2020 <strong>Ecookbook</strong></small>
+    </div>
+  </footer>
+  </span>
