@@ -133,7 +133,11 @@
   }
   
   
-  
+  .card-title,
+  .card-text {
+    color: black;
+  }
+
   
   
   
