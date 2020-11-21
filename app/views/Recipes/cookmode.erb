@@ -1,23 +1,16 @@
 <style>
-
-
-.nav-masthead .nav-link {
-  color: black;
-}
-
-.nav-masthead .nav-link:hover,
-.nav-masthead .nav-link:focus {
-  border-bottom-color: lightgrey;
-}
-
-
-.nav-masthead .active {
-  color: grey;
-  border-bottom-color: lightgrey;
-}
-
-
-.wrapper {
+  .nav-masthead .nav-link {
+    color: black;
+  }
+  .nav-masthead .nav-link:hover,
+  .nav-masthead .nav-link:focus {
+    border-bottom-color: lightgrey;
+  }
+  .nav-masthead .active {
+    color: grey;
+    border-bottom-color: lightgrey;
+  }
+  .wrapper {
     background: #fff;
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
@@ -26,31 +19,29 @@
     max-width: 960px;
     padding: 2.25%; /* 18px / 800px */
     width: 85%;
+    }
+  body {
+    padding-top: 1rem;
+    color: black;
   }
-
-body {
-  padding-top: 1rem;
-  color: black;
-}
-.starter-template {
-  padding: 3rem 1.5rem;
-  text-align: center;
-}
-.card {
-        margin: 0 auto; 
-        float: none; 
-        margin-bottom: 10px;
-}
-.display-2{
+  .starter-template {
+    padding: 3rem 1.5rem;
     text-align: center;
-}
-.text-muted{
+  }
+  .card {
+    margin: 0 auto; 
+    float: none; 
+    margin-bottom: 10px;
+  }
+  .display-2{
     text-align: center;
-}
-.mastfoot {
-  color: black;
-}
-
+  }
+  .text-muted{
+    text-align: center;
+  }
+  .mastfoot {
+    color: black;
+  }
 </style>
 
   <header class="masthead mb-auto">
@@ -78,55 +69,42 @@ body {
 
 
 <h1><em>Cookmode!</em></h1>
-
 <h2 class="display-2"><%=@recipe.name%></h2>
- <small class="text-muted">
-<h5><%=@recipe.recipeType.name%></h5>
+<small class="text-muted">
+  <h5><%=@recipe.recipeType.name%></h5>
 </small>
-
 <br>
-
-
-
-
 <div class="card" style="width: 40rem;">
   <div class="card-header">
-<p class="lead"><strong>Ingredients:</strong></p>
-</div>
-<ul class="list-group list-group-flush">
-    <%@ingredients.each do |i|%>
+    <p class="lead"><strong>Ingredients:</strong></p>
+  </div>
+  <ul class="list-group list-group-flush">
+  <%@ingredients.each do |i|%>
     <li class="list-group-item"><input type='checkbox'> <%=i%></input></li>
-    
     <br>
     <% end %>
-    </ul>
+  </ul>
 </div>
-
 <br>
 <br>
 <div class="card" style="width: 40rem;">
   <div class="card-header">
-
-<p class="lead"><strong>Steps:</strong></p>
-</div>
-
-<ul class="list-group list-group-flush">
+    <p class="lead"><strong>Steps:</strong></p>
+  </div>
+  <ul class="list-group list-group-flush">
     <%@steps.each do |i|%>
-        <li class="list-group-item"><input type='checkbox'> <%=i%></input></li>
-
+      <li class="list-group-item"><input type='checkbox'> <%=i%></input></li>
     <br>
     <% end %>
-    </ul>
-
-
+  </ul>
 </div>
 <br>
 <br>
 <div class="card">
-<div class="card-body">
-<h3>Description</h3>
-<p><%= @recipe.description %></p>
-</div>
+  <div class="card-body">
+    <h3>Description</h3>
+    <p><%= @recipe.description %></p>
+  </div>
 </div>
 
 <span class="border-top">
