@@ -1,122 +1,116 @@
 <style>
-.wrapper {
-    background: #fff;
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
-    box-shadow: 0 0 10px rgba(0,0,0,.3);
-    margin: 16px auto;
-    max-width: 960px;
-    padding: 2.25%; /* 18px / 800px */
-    width: 85%;
-  }
+  .wrapper {
+      background: #fff;
+      -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+      -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+      box-shadow: 0 0 10px rgba(0,0,0,.3);
+      margin: 16px auto;
+      max-width: 960px;
+      padding: 2.25%; /* 18px / 800px */
+      width: 85%;
+    }
   a,
-a:focus,
-a:hover {
-  color: black;
-}
-.nav-masthead .nav-link {
-  color: black;
-}
+  a:focus,
+  a:hover {
+    color: black;
+  }
+  .nav-masthead .nav-link {
+    color: black;
+  }
 
-.nav-masthead .nav-link:hover,
-.nav-masthead .nav-link:focus {
-  border-bottom-color: lightgrey;
-}
+  .nav-masthead .nav-link:hover,
+  .nav-masthead .nav-link:focus {
+    border-bottom-color: lightgrey;
+  }
 
-.nav-masthead .active {
-  color: grey;
-  border-bottom-color: lightgrey;
-}
+  .nav-masthead .active {
+    color: grey;
+    border-bottom-color: lightgrey;
+  }
 
-body {
-  padding-top: 1rem;
-  color: black;
-}
-.starter-template {
-  padding: 3rem 1.5rem;
-  text-align: left;
-}
+  body {
+    padding-top: 1rem;
+    color: black;
+  }
+  .starter-template {
+    padding: 3rem 1.5rem;
+    text-align: left;
+  }
 </style>
 
 
 <%if @recipe.user_id == session[:user_id]%>
-<%=flash[:message]%>
-  <header class="masthead mb-auto">
-    <div class="inner">
-      <h3 class="masthead-brand">EcookBook</h3>
-      <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/user/account">Account</a>
-        <a class="nav-link active" href="#">Edit Recipe</a>
-        <a class="nav-link" href="/recipes">All Recipes</a>
-        <a class="nav-link" href="/recipes/random">Surprise!</a>
-        <a class="nav-link" href="/logout">Logout</a>
-      </nav>
-    </div>
-  </header>
+  <%=flash[:message]%>
+    <header class="masthead mb-auto">
+      <div class="inner">
+        <h3 class="masthead-brand">EcookBook</h3>
+        <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" href="/user/account">Account</a>
+          <a class="nav-link active" href="#">Edit Recipe</a>
+          <a class="nav-link" href="/recipes">All Recipes</a>
+          <a class="nav-link" href="/recipes/random">Surprise!</a>
+          <a class="nav-link" href="/logout">Logout</a>
+        </nav>
+      </div>
+    </header>
+  <br>
+  <br>
+  <br> 
 
-<br>
-<br>
-<br> 
-
-<h1 class="display-3">Edit Recipe</h1>
+  <h1 class="display-3">Edit Recipe</h1>
   <img class="rounded mx-auto d-block" src="https://www.flaticon.com/svg/static/icons/svg/1094/1094633.svg" alt="recipe icon" width="84" height="84">
-
-<br>
-<form method='post' action='/recipes/<%=@recipe.id%>' id='edit_recipe'>
-<input type="hidden" name="_method" value="patch">
-<div class="form-group">
-<p class="lead">
-<label for="recipe_name">Name:</label>
-</p>
-<input type="text" name="recipe[name]" id="recipe_name" class="form-control" value='<%=@recipe.name%>'><br>
-</div>
-<div class="form-group">
-<p class="lead">
-<label for="ingredients">Ingredients:</label><br>
-</p>
-<small class="text-muted">IMPORTANT: Enter Ingredients as a bulleted list with * in front of each ingredient. (<a href="/recipes/example">Example</a>)</small>
-<textarea name="recipe[ingredients]" class="form-control" id="ingredients" row="3"><%= @recipe.ingredients %></textarea><br>
-</div>
-<div class="form-group">
-<p class="lead">
-<label for="steps">Steps:</label><br>
-</p>
-<small class="text-muted">IMPORTANT: Enter Steps as a bulleted list with * in front of each step. (<a href="/recipes/example" id="example">Example</a>)</small>
-<textarea name="recipe[steps]" id="steps" class="form-control" rows="3"><%= @recipe.steps %></textarea><br>
-</div>
-<div class="form-group">
-<label for="description">Description:</label><br>
-<textarea name="recipe[description]" id="description" class="form-control" rows="3"><%= @recipe.description %></textarea><br>
-
-<%@recipeType.each do |t|%>
-<input type='radio' id="<%t.name%>" name="recipe[recipeType_id]" value='<%=t.id%>' <%if @recipe.recipeType==t%> checked <%end%> >
-<label for='<%t.name%>'><%=t.name%></label>
-<% end %>
-
-<br>
-<input type="submit" value="Edit" class="btn btn-outline-dark"><br>
-<br>
-<input type="hidden" name="recipe[user_id]" value="<%=session[:user_id]%>">
-
-</form>
-
-
+  <br>
+  <form method='post' action='/recipes/<%=@recipe.id%>' id='edit_recipe'>
+    <input type="hidden" name="_method" value="patch">
+    <div class="form-group">
+      <p class="lead">
+      <label for="recipe_name">Name:</label>
+      </p>
+      <input type="text" name="recipe[name]" id="recipe_name" class="form-control" value='<%=@recipe.name%>'><br>
+    </div>
+    <div class="form-group">
+      <p class="lead">
+      <label for="ingredients">Ingredients:</label><br>
+      </p>
+      <small class="text-muted">IMPORTANT: Enter Ingredients as a bulleted list with * in front of each ingredient. (<a href="/recipes/example">Example</a>)</small>
+      <textarea name="recipe[ingredients]" class="form-control" id="ingredients" row="3"><%= @recipe.ingredients %></textarea><br>
+    </div>
+    <div class="form-group">
+      <p class="lead">
+      <label for="steps">Steps:</label><br>
+      </p>
+      <small class="text-muted">IMPORTANT: Enter Steps as a bulleted list with * in front of each step. (<a href="/recipes/example" id="example">Example</a>)</small>
+      <textarea name="recipe[steps]" id="steps" class="form-control" rows="3"><%= @recipe.steps %></textarea><br>
+    </div>
+    <div class="form-group">
+      <label for="description">Description:</label><br>
+      <textarea name="recipe[description]" id="description" class="form-control" rows="3"><%= @recipe.description %></textarea><br>
+      <%@recipeType.each do |t|%>
+      <input type='radio' id="<%t.name%>" name="recipe[recipeType_id]" value='<%=t.id%>' <%if @recipe.recipeType==t%> checked <%end%> >
+      <label for='<%t.name%>'><%=t.name%></label>
+      <% end %>
+    </div>
+    <br>
+    <input type="submit" value="Edit" class="btn btn-outline-dark"><br>
+    <br>
+    <input type="hidden" name="recipe[user_id]" value="<%=session[:user_id]%>">
+  </form>
 
 <% else %>
-<h1>Your not authorized to edit this article</h1>
-<form method='get' action='/' id='back_to_account'>
-<button type='submit'class="btn btn-primary btn-lg">Homepage</button>
-</form>
+  <h1>Your not authorized to edit this article</h1>
+  <form method='get' action='/' id='back_to_account'>
+    <button type='submit'class="btn btn-primary btn-lg">Homepage</button>
+  </form>
 <% end %>
 
 <span class="border-top">
 <footer class="mastfoot mt-auto">
     <div class="inner">
-    <small>&copy; 2020 <strong>Ecookbook</strong></small>
+      <small>&copy; 2020 <strong>Ecookbook</strong></small>
     </div>
-  </footer>
-  </span>
+</footer>
+</span>
 
 
 
