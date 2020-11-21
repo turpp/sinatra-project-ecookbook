@@ -1,16 +1,70 @@
+<style>
+  .nav-masthead .nav-link {
+    color: black;
+  }
+  .nav-masthead .nav-link:hover,
+  .nav-masthead .nav-link:focus {
+    border-bottom-color: lightgrey;
+  }
+  .nav-masthead .active {
+    color: grey;
+    border-bottom-color: lightgrey;
+  }
+  .wrapper {
+    background: #fff;
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    margin: 16px auto;
+    max-width: 960px;
+    padding: 2.25%; /* 18px / 800px */
+    width: 85%;
+    }
+  body {
+    padding-top: 1rem;
+    color: black;
+  }
+  .starter-template {
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+  .card {
+    margin: 0 auto; 
+    float: none; 
+    margin-bottom: 10px;
+  }
+  .display-2{
+    text-align: center;
+  }
+  .text-muted{
+    text-align: center;
+  }
+  .mastfoot {
+    color: black;
+  }
+  .lead {
+      text-align: center;
+  }
+</style>
+
 <h1>How to fill out the Ingredients and Steps field correcctly</h1>
 <br>
 <br>
 <h1>Ingredients</h1>
+<div class="card">
+  <div class="card-body">
 <ul>
     <li>-Bread</li>
     <li>-Sliced Lunch Meat</li>
     <li>-Cheese</li>
     <li>-Mayo</li>
 </ul>
-
+  </div>
+</div>
 <h1>Steps</h1>
 <ul>
+<div class="card">
+  <div class="card-body">
     <li>-layout bread</li>
     <li>-spread mayo on bread</li>
     <li>-put meat on bread</li>
@@ -18,15 +72,19 @@
     <li>-combine all together</li>
     <li>-Eat!</li>
 </ul>
+</div>
 <br>
 <br>
-
-<h3>To make your recipe look like above you must enter your Ingredients and Steps like below.</h3>
+<div class="card">
+  <div class="card-body">
+<p class="lead"><strong><u>To make your recipe look like above you must enter your Ingredients and Steps like below.</u></strong></p>
 <p>=> *Bread *Sliced Lunch Meat *Cheese *Mayo</p>
 <p>=> *layout bread *put meat on bread *put cheese on top of meat *combine all together *Eat!</p>
 <br>
 <p>All you have to do is put a * infront of each ingredient or step. Ecookbook will take care of the rest of you!</p>
-
 <form method='get' action='/recipes/new'>
-<button type='submit' value=submit>Back to Create Recipe</button>
+<button type='submit' class= "btn btn-dark" value=submit>Back to Create Recipe</button>
 </form>
+
+</div>
+</div>
