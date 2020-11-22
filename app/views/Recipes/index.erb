@@ -20,58 +20,43 @@
     </div>
   </header>
 
-
-
-
 <%=flash[:message]%>
 <h1 class="display-2 ">All Recipes</h1>
 <%@recipeType.each do |t|%>
 <br>
 <br>
-
-    <h2 class="display-4"><u><%=t.name%></u></h2>
-<div class="row ">
-
+  <h2 class="display-4"><u><%=t.name%></u></h2>
+  <div class="row ">
     <%@recipes.each do |recipe|%>
-
-    <%if recipe.recipeType_id == t.id%> 
-
-    <div class="col-md-4">
-    <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 24rem;">
-              <%if recipe.recipeType.name=="Breakfast"%>
-          <img src="https://www.flaticon.com/svg/static/icons/svg/985/985505.svg" class="card-img-top" alt="Breakfast Icon" width="90" height="90">
+      <%if recipe.recipeType_id == t.id%> 
+      <div class="col-md-4">
+        <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 24rem;">
+          <%if recipe.recipeType.name=="Breakfast"%>
+            <img src="https://www.flaticon.com/svg/static/icons/svg/985/985505.svg" class="card-img-top" alt="Breakfast Icon" width="90" height="90">
           <% elsif recipe.recipeType.name=="Lunch" %>
-          <img src="https://www.flaticon.com/svg/static/icons/svg/601/601684.svg" class="card-img-top" alt="Lunch Icon" width="90" height="90">
+            <img src="https://www.flaticon.com/svg/static/icons/svg/601/601684.svg" class="card-img-top" alt="Lunch Icon" width="90" height="90">
           <% elsif recipe.recipeType.name=="Dinner"%>
-          <img src="https://www.flaticon.com/svg/static/icons/svg/1046/1046874.svg" class="card-img-top" alt="Dinner Icon" width="90" height="90">
+            <img src="https://www.flaticon.com/svg/static/icons/svg/1046/1046874.svg" class="card-img-top" alt="Dinner Icon" width="90" height="90">
           <% elsif recipe.recipeType.name=="Dessert"%>
-          <img src="https://www.flaticon.com/svg/static/icons/svg/2965/2965574.svg" class="card-img-top" alt="Dessert Icon" width="90" height="90">
+            <img src="https://www.flaticon.com/svg/static/icons/svg/2965/2965574.svg" class="card-img-top" alt="Dessert Icon" width="90" height="90">
           <% elsif recipe.recipeType.name=="Snack" %>
-          <img src="https://www.flaticon.com/svg/static/icons/svg/3076/3076046.svg" class="card-img-top" alt="Snack Icon" width="90" height="90">
+            <img src="https://www.flaticon.com/svg/static/icons/svg/3076/3076046.svg" class="card-img-top" alt="Snack Icon" width="90" height="90">
           <% else %>
-
           <%end%>
-
-        <div class="card-body">
+          <div class="card-body">
             <h5 class="card-title"><strong><%=recipe.name%></strong> <br> <small class="text-muted">by <%=recipe.user.username%></small></h5>  
             <p class="card-text lead"> <%=recipe.description%></p>
             <a href="/recipes/<%=recipe.id%>" class="btn btn-primary">View Recipe</a>
-             </div>
-             </div>
-             </div>
-
+        </div>
+      </div>
+  </div>
     <br>
-    <%end%>
-                             
-
+      <%end%>                     
     <% end %>
 </div>
     <br>
     <br>
-    <% end %>
-
-
-
+  <% end %>
 <br>
 <span class="border-top">
 <footer class="mastfoot mt-auto">
