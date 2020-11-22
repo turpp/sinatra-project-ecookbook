@@ -1,6 +1,5 @@
 
 <%=flash[:message]%>
-
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <header class="masthead mb-auto">
     <div class="inner">
@@ -8,99 +7,56 @@
       <nav class="nav nav-masthead justify-content-center">
         <a class="nav-link" href="/">Home</a>
         <a class="nav-link active" href="/signup">Account</a>
-
         <a class="nav-link" href="/recipes/new">Create Recipe</a>
         <a class="nav-link" href="/recipes">All Recipes</a>
         <a class="nav-link" href="/recipes/random">Surprise!</a>
         <a class="nav-link" href="/logout">Logout</a>
-
       </nav>
     </div>
   </header>
-
-
-
-
-
-
-<br>
-<br>
-<h1>Welcome <em><%= @user.username %>!</em></h1>
-<br>
-<br>
-
-
-
-
-
-
-
-
-
-
-
-<%@recipeType.each do |t|%>
-<br>
-<br>
-<h2 class="display-4"><u><%=t.name%></u></h2>
-<div class="row ">
-    <%@user.recipes.each do |recipe|%>
+  <br>
+  <br>
+  <h1>Welcome <em><%= @user.username %>!</em></h1>
+  <br>
+  <br>
+  <%@recipeType.each do |t|%>
+  <br>
+  <br>
+  <h2 class="display-4"><u><%=t.name%></u></h2>
+  <div class="row ">
+      <%@user.recipes.each do |recipe|%>
         <%if recipe.recipeType==t%>
           <div class="col-md-4">
-          <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 24rem;">
-          <%if recipe.recipeType.name=="Breakfast"%>
-          <img src="https://www.flaticon.com/svg/static/icons/svg/985/985505.svg" class="card-img-top" alt="Breakfast Icon" width="90" height="90">
-          <% elsif recipe.recipeType.name=="Lunch" %>
-          <img src="https://www.flaticon.com/svg/static/icons/svg/601/601684.svg" class="card-img-top" alt="Lunch Icon" width="90" height="90">
-          <% elsif recipe.recipeType.name=="Dinner"%>
-          <img src="https://www.flaticon.com/svg/static/icons/svg/1046/1046874.svg" class="card-img-top" alt="Dinner Icon" width="90" height="90">
-          <% elsif recipe.recipeType.name=="Dessert"%>
-          <img src="https://www.flaticon.com/svg/static/icons/svg/2965/2965574.svg" class="card-img-top" alt="Dessert Icon" width="90" height="90">
-          <% elsif recipe.recipeType.name=="Snack" %>
-          <img src="https://www.flaticon.com/svg/static/icons/svg/3076/3076046.svg" class="card-img-top" alt="Snack Icon" width="90" height="90">
-          <% else %>
+            <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 24rem;">
+              <%if recipe.recipeType.name=="Breakfast"%>
+                <img src="https://www.flaticon.com/svg/static/icons/svg/985/985505.svg" class="card-img-top" alt="Breakfast Icon" width="90" height="90">
+              <% elsif recipe.recipeType.name=="Lunch" %>
+                <img src="https://www.flaticon.com/svg/static/icons/svg/601/601684.svg" class="card-img-top" alt="Lunch Icon" width="90" height="90">
+              <% elsif recipe.recipeType.name=="Dinner"%>
+                <img src="https://www.flaticon.com/svg/static/icons/svg/1046/1046874.svg" class="card-img-top" alt="Dinner Icon" width="90" height="90">
+              <% elsif recipe.recipeType.name=="Dessert"%>
+                <img src="https://www.flaticon.com/svg/static/icons/svg/2965/2965574.svg" class="card-img-top" alt="Dessert Icon" width="90" height="90">
+              <% elsif recipe.recipeType.name=="Snack" %>
+                <img src="https://www.flaticon.com/svg/static/icons/svg/3076/3076046.svg" class="card-img-top" alt="Snack Icon" width="90" height="90">
+              <% else %>
 
-          <%end%>
-          <div class="card-body">
-          <h5 class="card-title"><strong><%=recipe.name%></strong></h5>  
-          <p class="card-text lead"> <%=recipe.description%></p>
-          <a href="/recipes/<%=recipe.id%>" class="btn btn-primary">View Recipe</a>
-          
+              <%end%>
+                <div class="card-body">
+                  <h5 class="card-title"><strong><%=recipe.name%></strong></h5>  
+                  <p class="card-text lead"> <%=recipe.description%></p>
+                    <a href="/recipes/<%=recipe.id%>" class="btn btn-primary">View Recipe</a>
+                </div>
+            </div>
           </div>
-          </div>
-          </div>
-          <br>
-        
-    <br>
+  <br>
+  <br>
         <%end%>
-    <% end %>
+      <% end %>
     </div>
-<%end%>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <%end%>
 </div>
-
-  <footer class="mastfoot mt-auto">
-    <div class="inner">
+<footer class="mastfoot mt-auto">
+  <div class="inner">
     <small>&copy; 2020 <strong>Ecookbook</strong></small>
-    </div>
-  </footer>
+  </div>
+</footer>
