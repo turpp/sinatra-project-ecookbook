@@ -1,5 +1,5 @@
 <style>
-.wrapper {
+  .wrapper {
     background: #fff;
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
@@ -10,17 +10,17 @@
     width: 85%;
     color: dimgrey;
   }
-  </style>
 
+  .inner {
+    color: black;
+  }
+  </style>
+  
 <%=flash[:message]%>
 
-
 <h1 class="display-3">Welcome to EcookBook!!</h1>
-
 <br>
 <br>
-
-
 <form class="form-signin" method="post" action="/login">
   <img class="rounded mx-auto d-block" src="https://image.flaticon.com/icons/png/512/113/113339.png" alt="" width="84" height="84">
   <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
@@ -33,19 +33,18 @@
 </form>
 <div class="text-center">
   <p class="lead"> Or Sign Up!</p>
-
-<form method='get' action='/signup'>
-<button type="submit" class="btn btn-outline-secondary">Sign Up</button>
-</form>
-<div>
+  <form method='get' action='/signup'>
+    <button type="submit" class="btn btn-outline-secondary">Sign Up</button>
+  </form>
+</div>
 <br>
 <br>
 <span class="border-top">
-<footer class="mastfoot mt-auto">
+  <footer class="mastfoot mt-auto">
     <div class="inner">
-    <small>&copy; 2020 <strong>Ecookbook</strong></small>
+      <small>&copy; 2020 <strong>Ecookbook</strong></small>
     </div>
   </footer>
-  </span>
+</span>
 
 
