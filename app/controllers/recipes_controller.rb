@@ -26,12 +26,8 @@ class RecipesController < ApplicationController
     end
 #---------------- Needs to be refactored--------------
     post '/recipes' do
-        valid=params[:recipe].map do |k,v|
-            something_there(v)
-         end
-        
-         if !valid.include?(false) && valid.count==6
-            if valid_bullets(params[:recipe][:ingredients])&& valid_bullets(params[:recipe][:steps])
+        if something_there_recipes    
+            if valid_bullets
                 recipe=Recipe.create(params[:recipe])
                 redirect :"recipes/#{recipe.id}"
             else
@@ -43,7 +39,6 @@ class RecipesController < ApplicationController
             redirect to('/recipes/new')
         end
     end
-#---------------- Needs to be refactored--------------
 
     get '/recipes/:id/cookmode' do
         @recipe=Recipe.find_by(id: params[:id])
@@ -59,12 +54,8 @@ class RecipesController < ApplicationController
     end
 #---------------- Needs to be refactored--------------
     patch '/recipes/:id' do
-        valid=params[:recipe].map do |k,v|
-            something_there(v)
-         end
-
-         if !valid.include?(false) && valid.count==6
-            if valid_bullets(params[:recipe][:ingredients])&& valid_bullets(params[:recipe][:steps])
+        if something_there_recipes    
+            if valid_bullets
                 recipe=Recipe.find_by(id: params[:id])
                 recipe.update(params[:recipe])
                 flash[:message]="Recipe Edited!"

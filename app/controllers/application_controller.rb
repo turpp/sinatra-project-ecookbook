@@ -30,13 +30,19 @@ class ApplicationController < Sinatra::Base
     array=string.split("*")
     end
 
-    def something_there(string)
-     string.present?
+    def something_there_recipes
+      valid=params[:recipe].map do |k,v|
+        v.present?
+      end
+      !valid.include?(false) && valid.count==6
     end
 
-    def valid_bullets(string)
-      string.include?("*")
-    end
+
+    def valid_bullets
+      ingredients= params[:recipe][:ingredients].include?("*")
+      steps= params[:recipe][:steps].include?("*")
+      ingredients&&steps
+      end
 
   end
 
