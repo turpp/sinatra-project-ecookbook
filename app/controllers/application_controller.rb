@@ -7,12 +7,11 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, "secret"
+  end
 
     get '/' do
       erb :welcome
     end
-
-  end
 
   helpers do
     def is_logged_in
@@ -35,13 +34,10 @@ class ApplicationController < Sinatra::Base
      string.present?
     end
 
-
     def valid_bullets(string)
       string.include?("*")
     end
 
-
   end
-
 
 end

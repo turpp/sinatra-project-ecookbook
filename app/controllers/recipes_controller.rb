@@ -24,9 +24,8 @@ class RecipesController < ApplicationController
         @recipeType=RecipeType.all
         erb :'recipes/new'
     end
-
+#---------------- Needs to be refactored--------------
     post '/recipes' do
-    
         valid=params[:recipe].map do |k,v|
             something_there(v)
          end
@@ -43,24 +42,8 @@ class RecipesController < ApplicationController
             flash[:message]="Please fill out all fields"
             redirect to('/recipes/new')
         end
-
-        #this is if we want to save what they inputed in the new form and put it back to the new form
-        # params[:recipe].each do |k,v|
-            # if v==""  
-              # params[:recipe][k]="blank"
-             #end  
-        #end  
-
-
-        #to make it fill in with info that was typed before. 
-        #take the params info and fill it up with everything needed thats missing
-        #I have to create a new recipe
-        #put value in form set to the new temp recipe
-    
-        #in form I can have it check for a temp recipe by user id with if statment
-
-
     end
+#---------------- Needs to be refactored--------------
 
     get '/recipes/:id/cookmode' do
         @recipe=Recipe.find_by(id: params[:id])
@@ -74,9 +57,8 @@ class RecipesController < ApplicationController
         @recipeType=RecipeType.all
         erb :'recipes/edit'
     end
-
+#---------------- Needs to be refactored--------------
     patch '/recipes/:id' do
-
         valid=params[:recipe].map do |k,v|
             something_there(v)
          end
@@ -86,9 +68,8 @@ class RecipesController < ApplicationController
                 recipe=Recipe.find_by(id: params[:id])
                 recipe.update(params[:recipe])
                 flash[:message]="Recipe Edited!"
-
                 redirect "recipes/#{recipe.id}"
-                    else
+            else
                 flash[:message]="Make sure to include * for each bullets in Ingredients and Steps"
                 redirect to("recipes/#{params[:id]}/edit")
             end
@@ -96,10 +77,9 @@ class RecipesController < ApplicationController
             flash[:message]="Please fill out all fields"
             redirect to("recipes/#{params[:id]}/edit")
         end
-        # recipe=Recipe.find_by(id: params[:id])
-        # recipe.update(params[:recipe])
-        # redirect "recipes/#{recipe.id}"
     end
+# -------------above needs refactored------------
+
 
     delete '/recipes/:id' do
         recipe=Recipe.find_by(id: params[:id])
@@ -114,7 +94,5 @@ class RecipesController < ApplicationController
         @steps=bullet_list(@recipe.steps).reject{|i| i==""}
         erb :"recipes/show"
     end 
-
-   
 
 end

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
             flash[:message] = "You are already logged in!"
             redirect to ('/user/account')
         else
-        erb :'users/index'
+            erb :'users/index'
         end
     end
 
@@ -43,8 +43,6 @@ class UsersController < ApplicationController
 
     post '/user/signup' do
         if something_there(params[:user][:username])&&something_there(params[:user][:password_digest])
-
-        
             if User.find_by(username: params[:user][:username])
                 flash[:message] = "Username already taken. Try a different username."
                 redirect to('/signup')
@@ -67,18 +65,13 @@ class UsersController < ApplicationController
     get '/logout' do
         session.clear
         redirect '/'
-        
     end
 
     get '/user/account' do
         @recipes=Recipe.all
         @recipeType=RecipeType.all
-
         @user=User.find_by(id: session[:user_id])
         erb :'users/account'
     end
-
-    
-
 
 end
