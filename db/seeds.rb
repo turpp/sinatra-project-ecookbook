@@ -1,6 +1,6 @@
-user1 = User.create(:username => "ada", :password_digest => "123")
-user2 = User.create(:username => "taz", :password_digest => "321")
-user3 = User.create(:username => "tripp", :password_digest => "password")
+user1 = User.create(:username => "ada", :password => "123")
+user2 = User.create(:username => "taz", :password => "321")
+user3 = User.create(:username => "tripp", :password => "password")
 
 recipeType1=RecipeType.create(:name=>"Breakfast")
 recipeType1=RecipeType.create(:name=>"Lunch")

@@ -12,10 +12,11 @@ class UsersController < ApplicationController
     end
 
     post '/login' do
-        if something_there(params[:user][:username])&&something_there(params[:user][:password_digest])
+       
+        if something_there_users
             user=User.find_by(username: params[:user][:username])
             if user
-                if user.password_digest==params[:user][:password_digest]
+                if user.authenticate(params[:user][:password])
                     session[:user_id]=user.id
                     redirect '/user/account'
                 else
@@ -42,12 +43,12 @@ class UsersController < ApplicationController
     end
 
     post '/user/signup' do
-        if something_there(params[:user][:username])&&something_there(params[:user][:password_digest])
+        if something_there_users
             if User.find_by(username: params[:user][:username])
                 flash[:message] = "Username already taken. Try a different username."
                 redirect to('/signup')
             else
-                if params[:user][:password_digest]==params[:retyped_password]
+                if params[:user][:password]==params[:retyped_password]
                     user=User.create(params[:user])
                     session[:user_id]=user.id
                     redirect '/user/account'
@@ -73,5 +74,6 @@ class UsersController < ApplicationController
         @user=User.find_by(id: session[:user_id])
         erb :'users/account'
     end
+
 
 end

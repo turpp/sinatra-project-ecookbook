@@ -37,6 +37,13 @@ class ApplicationController < Sinatra::Base
       !valid.include?(false) && valid.count==6
     end
 
+    def something_there_users
+      username=params[:user][:username].present?
+      pass=params[:user][:password].present?
+      username&&pass
+    end
+
+
 
     def valid_bullets
       ingredients= params[:recipe][:ingredients].include?("*")

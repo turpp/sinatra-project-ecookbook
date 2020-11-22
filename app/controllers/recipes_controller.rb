@@ -24,7 +24,7 @@ class RecipesController < ApplicationController
         @recipeType=RecipeType.all
         erb :'recipes/new'
     end
-#---------------- Needs to be refactored--------------
+
     post '/recipes' do
         if something_there_recipes    
             if valid_bullets
@@ -52,7 +52,7 @@ class RecipesController < ApplicationController
         @recipeType=RecipeType.all
         erb :'recipes/edit'
     end
-#---------------- Needs to be refactored--------------
+
     patch '/recipes/:id' do
         if something_there_recipes    
             if valid_bullets
@@ -69,8 +69,6 @@ class RecipesController < ApplicationController
             redirect to("recipes/#{params[:id]}/edit")
         end
     end
-# -------------above needs refactored------------
-
 
     delete '/recipes/:id' do
         recipe=Recipe.find_by(id: params[:id])
