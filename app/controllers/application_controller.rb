@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, "secret"
+    set :session_secret, "n.BZxhtxUA,A.e9U"
   end
 
     get '/' do
@@ -18,16 +18,13 @@ class ApplicationController < Sinatra::Base
       !!session[:user_id]
     end
 
-    def current_user
-      User.find_by(id: session[:user_id])
-    end
-
     def authorized(recipe)
       recipe.user_id == session[:user_id]
     end
 
     def bullet_list(string)
-    array=string.split("*")
+    array=string.split("*").reject{|i| i==""}
+    
     end
 
     def something_there_recipes

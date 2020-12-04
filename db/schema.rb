@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_11_18_100305) do
     t.string "steps"
     t.string "description"
     t.integer "user_id"
-    t.integer "recipeType_id"
+    t.integer "recipe_type_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -11,8 +11,8 @@ class RecipesController < ApplicationController
 
     get '/recipes/random' do 
         @recipe=Recipe.all.sample
-        @ingredients=bullet_list(@recipe.ingredients).reject{|i| i==""}
-        @steps=bullet_list(@recipe.steps).reject{|i| i==""}
+        @ingredients=bullet_list(@recipe.ingredients)
+        @steps=bullet_list(@recipe.steps)
         erb :random
       end
 
@@ -42,8 +42,8 @@ class RecipesController < ApplicationController
 
     get '/recipes/:id/cookmode' do
         @recipe=Recipe.find_by(id: params[:id])
-        @ingredients=bullet_list(@recipe.ingredients).reject{|i| i==""}
-        @steps=bullet_list(@recipe.steps).reject{|i| i==""}
+        @ingredients=bullet_list(@recipe.ingredients)
+        @steps=bullet_list(@recipe.steps)
         erb :'recipes/cookmode'
     end
 
@@ -54,33 +54,42 @@ class RecipesController < ApplicationController
     end
 
     patch '/recipes/:id' do
-        if something_there_recipes    
-            if valid_bullets
-                recipe=Recipe.find_by(id: params[:id])
-                recipe.update(params[:recipe])
-                flash[:message]="Recipe Edited!"
-                redirect "recipes/#{recipe.id}"
+        recipe=Recipe.find_by(id: params[:id])
+        if session[:user_id]==recipe.user_id
+            if something_there_recipes    
+                if valid_bullets
+                    recipe=Recipe.find_by(id: params[:id])
+                    recipe.update(params[:recipe])
+                    flash[:message]="Recipe Edited!"
+                    redirect "recipes/#{recipe.id}"
+                else
+                    flash[:message]="Make sure to include * for each bullets in Ingredients and Steps"
+                    redirect to("recipes/#{params[:id]}/edit")
+                end
             else
-                flash[:message]="Make sure to include * for each bullets in Ingredients and Steps"
+                flash[:message]="Please fill out all fields"
                 redirect to("recipes/#{params[:id]}/edit")
             end
         else
-            flash[:message]="Please fill out all fields"
-            redirect to("recipes/#{params[:id]}/edit")
+            erb :'recipes/not_allowed'
         end
     end
 
     delete '/recipes/:id' do
         recipe=Recipe.find_by(id: params[:id])
+        if session[:user_id]==recipe.user_id
         recipe.destroy
         flash[:message]="recipe deleted"
         redirect '/recipes'
+        else
+            erb :'recipes/not_allowed'
+        end
     end
 
     get '/recipes/:id' do
         @recipe=Recipe.find_by(id: params[:id])
-        @ingredients=bullet_list(@recipe.ingredients).reject{|i| i==""}
-        @steps=bullet_list(@recipe.steps).reject{|i| i==""}
+        @ingredients=bullet_list(@recipe.ingredients)
+        @steps=bullet_list(@recipe.steps)
         erb :"recipes/show"
     end 
 

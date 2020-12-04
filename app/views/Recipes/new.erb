@@ -84,7 +84,7 @@
   </div>
   <br>
   <%@recipeType.each do |t|%>
-    <input type='radio' id="<%t.name%>" name="recipe[recipeType_id]" value='<%=t.id%>'>
+    <input type='radio' id="<%t.name%>" name="recipe[recipe_type_id]" value='<%=t.id%>'>
     <label for='<%t.name%>'><%=t.name%></label>
   <% end %>
   <br>

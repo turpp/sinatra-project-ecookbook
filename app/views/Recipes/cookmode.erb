@@ -53,7 +53,6 @@
         <a class="nav-link" href="/recipes/new">Create Recipe</a>
         <a class="nav-link" href="/recipes">All Recipes</a>
         <a class="nav-link" href="/recipes/random">Surprise!</a>
-        <a class="nav-link" href="/logout">Logout</a>
       </nav>
     </div>
   </header>
@@ -63,7 +62,7 @@
 <h1><em>Cookmode!</em></h1>
 <h2 class="display-2"><%=@recipe.name%></h2>
 <small class="text-muted">
-  <h5><%=@recipe.recipeType.name%></h5>
+  <h5><%=@recipe.recipe_type.name%></h5>
 </small>
 <br>
 <div class="card" style="width: 40rem;">

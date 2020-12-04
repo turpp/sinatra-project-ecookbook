@@ -1,4 +1,4 @@
-
+<% if session[:user_id]%>
 <%=flash[:message]%>
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <header class="masthead mb-auto">
@@ -25,18 +25,18 @@
   <h2 class="display-4"><u><%=t.name%></u></h2>
   <div class="row ">
       <%@user.recipes.each do |recipe|%>
-        <%if recipe.recipeType==t%>
+        <%if recipe.recipe_type==t%>
           <div class="col-md-4">
             <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 24rem;">
-              <%if recipe.recipeType.name=="Breakfast"%>
+              <%if recipe.recipe_type.name=="Breakfast"%>
                 <img src="https://www.flaticon.com/svg/static/icons/svg/985/985505.svg" class="card-img-top" alt="Breakfast Icon" width="90" height="90">
-              <% elsif recipe.recipeType.name=="Lunch" %>
+              <% elsif recipe.recipe_type.name=="Lunch" %>
                 <img src="https://www.flaticon.com/svg/static/icons/svg/601/601684.svg" class="card-img-top" alt="Lunch Icon" width="90" height="90">
-              <% elsif recipe.recipeType.name=="Dinner"%>
+              <% elsif recipe.recipe_type.name=="Dinner"%>
                 <img src="https://www.flaticon.com/svg/static/icons/svg/1046/1046874.svg" class="card-img-top" alt="Dinner Icon" width="90" height="90">
-              <% elsif recipe.recipeType.name=="Dessert"%>
+              <% elsif recipe.recipe_type.name=="Dessert"%>
                 <img src="https://www.flaticon.com/svg/static/icons/svg/2965/2965574.svg" class="card-img-top" alt="Dessert Icon" width="90" height="90">
-              <% elsif recipe.recipeType.name=="Snack" %>
+              <% elsif recipe.recipe_type.name=="Snack" %>
                 <img src="https://www.flaticon.com/svg/static/icons/svg/3076/3076046.svg" class="card-img-top" alt="Snack Icon" width="90" height="90">
               <% else %>
 
@@ -60,3 +60,10 @@
     <small>&copy; 2020 <strong>EcookBook</strong></small>
   </div>
 </footer>
+<% else %>
+  <p class="lead">You must be logged in to see an account!<p>
+  <a href="/login" class="btn btn-primary">Log in</a>
+  <a href="/signup" class="btn btn-dark">Sign up</a><br>
+<br>
+  <a href="/" class="btn btn-primary btn-lg">Homepage</a>
+<%end%>

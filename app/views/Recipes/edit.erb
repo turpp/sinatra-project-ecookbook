@@ -87,7 +87,7 @@
       <label for="description">Description:</label><br>
       <textarea name="recipe[description]" id="description" class="form-control" rows="3"><%= @recipe.description %></textarea><br>
       <%@recipeType.each do |t|%>
-      <input type='radio' id="<%t.name%>" name="recipe[recipeType_id]" value='<%=t.id%>' <%if @recipe.recipeType==t%> checked <%end%> >
+      <input type='radio' id="<%t.name%>" name="recipe[recipe_type_id]" value='<%=t.id%>' <%if @recipe.recipe_type==t%> checked <%end%> >
       <label for='<%t.name%>'><%=t.name%></label>
       <% end %>
     </div>
